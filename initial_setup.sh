@@ -8,6 +8,8 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install -y vim screen git
 
 # install handbrake
+sudo add-apt-repository ppa:stebbins/handbrake-releases
+sudo apt-get update
 sudo apt-get install -y handbrake-cli
 
 # install plex packages
