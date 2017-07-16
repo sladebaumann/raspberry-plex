@@ -8,9 +8,10 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install -y vim screen git
 
 # install handbrake
-sudo add-apt-repository ppa:stebbins/handbrake-releases
-sudo apt-get update
-sudo apt-get install -y handbrake-cli
+# Thanks to gkreidl - https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=142015#
+sudo apt-get install gdebi-core
+wget http://steinerdatenbank.de/software/ghb_0.10.5-1_armhf.deb
+sudo gdebi ghb_0.10.5-1_armhf.deb
 
 # install plex packages
 sudo apt-get install apt-transport-https -y --force-yes
