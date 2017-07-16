@@ -13,6 +13,9 @@ sudo apt-get install gdebi-core
 wget http://steinerdatenbank.de/software/ghb_0.10.5-1_armhf.deb
 sudo gdebi ghb_0.10.5-1_armhf.deb
 
+# setup handbrake to batch convert videos
+# see - https://serato.com/forum/discussion/125664
+
 # install plex packages
 sudo apt-get install apt-transport-https -y --force-yes
 wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -
