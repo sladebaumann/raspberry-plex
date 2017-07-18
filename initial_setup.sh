@@ -15,6 +15,23 @@ sudo gdebi ghb_0.10.5-1_armhf.deb
 
 # setup handbrake to batch convert videos
 # see - https://serato.com/forum/discussion/125664
+cd ~
+# create batch_convert file
+cat > ~/batch_convert.sh << EOF
+!/bin/sh
+
+# this will batch convert videos in staged_videos
+# and put the converted video into plex_videos. It
+# will also delete converted videos from staged_videos.
+
+# converts filenames with spaces to underscores
+find /home/pi/raw_videos/* -name "* *" -type f | rename 's/ /_/g'
+
+for file in `ls /home/pi/raw_videos`; do HandBrakeCLI -v -i /home/pi/raw_videos/${file} -o /home/pi/plex_videos/"${file%.*}.mp4" -e x264 -b 3000 -T -E av_aac -B 192 -R 48 -d slow -5; done
+
+# cleanup raw_videos
+# rm /h me/pi/raw_videos/*
+EOF
 
 # install plex packages
 sudo apt-get install apt-transport-https -y --force-yes
