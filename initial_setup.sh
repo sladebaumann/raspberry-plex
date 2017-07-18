@@ -18,19 +18,28 @@ sudo gdebi ghb_0.10.5-1_armhf.deb
 cd ~
 # create batch_convert file
 cat > ~/batch_convert.sh << EOF
-!/bin/sh
+#!/bin/sh
 
-# this will batch convert videos in staged_videos
+# this will batch convert videos in raw_videos
 # and put the converted video into plex_videos. It
-# will also delete converted videos from staged_videos.
+# will also delete converted videos from raw_videos.
 
 # converts filenames with spaces to underscores
-find /home/pi/raw_videos/* -name "* *" -type f | rename 's/ /_/g'
+find /home/pi/raw_videos/TV_Shows/* -name "* *" -type f | rename 's/ /_/g'
+find /home/pi/raw_videos/Movies/* -name "* *" -type f | rename 's/ /_/g'
 
-for file in `ls /home/pi/raw_videos`; do HandBrakeCLI -v -i /home/pi/raw_videos/${file} -o /home/pi/plex_videos/"${file%.*}.mp4" -e x264 -b 3000 -T -E av_aac -B 192 -R 48 -d slow -5; done
+
+# converts videos to MP4 using HandBrakeCLI
+
+for file in `ls /home/pi/raw_videos/TV_Shows`; do HandBrakeCLI -v -i /home/pi/raw_videos/TV_Shows/${file} -o /media/usb/plex/TV_Shows/"${file%.*}.mp4" -e x264 -b 3000 -T -E av_aac -B 192 -R 48 -d slow -5; done
+
+for file in `ls /home/pi/raw_videos/Movies`; do HandBrakeCLI -v -i /home/pi/raw_videos/Movies/${file} -o /media/usb/plex/Movies/"${file%.*}.mp4" -e x264 -b 3000 -T -E av_aac -B 192 -R 48 -d slow -5; done
+
 
 # cleanup raw_videos
-# rm /h me/pi/raw_videos/*
+rm /home/pi/raw_videos/TV_Shows/*
+rm /home/pi/raw_videos/Movies/*
+
 EOF
 
 # install plex packages
