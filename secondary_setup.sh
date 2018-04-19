@@ -24,3 +24,5 @@ static domain_name_servers=192.168.0.1
 
 EOF
 
+# reboot
+sudo reboot now
