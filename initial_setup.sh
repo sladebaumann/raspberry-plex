@@ -43,7 +43,8 @@ rm /home/pi/raw_videos/Movies/*
 EOF
 
 # install plex packages
-. plex.sh
+sudo chmod 777 plex.sh
+sudo source plex.sh
 
 # setup vim colors using molokai colorscheme from https://github.com/tomasr/molokai
 mkdir -p ~/.vim/colors
