@@ -5,7 +5,7 @@ sudo raspi-config nonint do_ssh 1
 
 
 # start plex every time system starts up
-cat > ~/.bash_profile << EOF
+cat >> ~/.bash_profile << EOF
 
 sudo service plexmediaserver stop
 sudo service plexmediaserver start
@@ -24,3 +24,5 @@ static domain_name_servers=192.168.0.1
 
 EOF
 
+# reboot
+sudo reboot now
