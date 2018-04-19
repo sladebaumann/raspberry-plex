@@ -4,7 +4,7 @@
 # add my public key
 sudo wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key | apt-key add -
 # add my PMS repo
-sudo echo "deb https://dev2day.de/pms/ stretch main" >> /etc/apt/sources.list.d/pms.list
+sudo echo "deb https://dev2day.de/pms/ stretch main" >> sudo /etc/apt/sources.list.d/raspi.list
 # activate https
 sudo apt-get install apt-transport-https
 # update the repos
