@@ -43,11 +43,7 @@ rm /home/pi/raw_videos/Movies/*
 EOF
 
 # install plex packages
-sudo apt-get install apt-transport-https -y --force-yes
-wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -
-echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list
-sudo apt-get update -y
-sudo apt-get install -t jessie plexmediaserver -y
+. plex.sh
 
 # setup vim colors using molokai colorscheme from https://github.com/tomasr/molokai
 mkdir -p ~/.vim/colors
