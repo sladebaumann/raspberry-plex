@@ -44,7 +44,7 @@ EOF
 
 # install plex packages
 sudo chmod 777 plex.sh
-sudo source plex.sh
+sudo ./plex.sh
 
 # setup vim colors using molokai colorscheme from https://github.com/tomasr/molokai
 mkdir -p ~/.vim/colors
